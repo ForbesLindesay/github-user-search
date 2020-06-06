@@ -10,6 +10,7 @@ export default function useSearchQuery() {
   const [query, setQueryLocal] = useState(getQuery);
 
   useEffect(() => {
+    ;
     history.listen(() => {
       const q = getQuery();
       setQueryLocal(q);

@@ -19,8 +19,8 @@ function App() {
   );
   const staleSearchResults = useStaleWhileNull(searchResults);
   return (
-    <div className="container h-full pt-20 flex flex-col">
-      <label className="pb-8">
+    <div className="container h-full pt-4 lg:pt-10 flex flex-col">
+      <label className="pb-2 lg:pb-8">
         <div className="text-2xl font-sans font-light flex items-center">
           Search GitHub users
         </div>
@@ -36,11 +36,13 @@ function App() {
             name="q"
             placeholder="Search GitHub users"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
           />
         </div>
       </label>
-      {staleSearchResults?.ok ? (
+      {!query ? null : staleSearchResults?.ok ? (
         <>
           <UserListHeader
             count={staleSearchResults.userCount}

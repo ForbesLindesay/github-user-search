@@ -11,12 +11,15 @@ import { relayPagination } from "@urql/exchange-graphcache/extras";
 import "./tailwind.generated.css";
 import App from "./App";
 
+function getSessionCookie() {
+  return document.cookie.split(';').map(v => v.trim()).find(v => v.startsWith('access_token='))?.substr('access_token='.length)
+}
 const client = createUrqlClient({
   url: "https://api.github.com/graphql",
   fetchOptions: {
     headers: {
-      // this token has no actual permissions associated with it
-      Authorization: `Bearer 28da939e5c3ca2e3a6c6426288600b38284b8400`,
+      // to run in Create React App, set the REACT_APP_ACCESS_TOKEN env var
+      Authorization: `Bearer ${getSessionCookie() || process.env.REACT_APP_ACCESS_TOKEN}`,
     },
   },
   exchanges: [

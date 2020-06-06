@@ -4,6 +4,7 @@ export default function useStaleWhileNull<T>(value: T) {
   const staleValueRef = useRef(value);
 
   useEffect(() => {
+    ;
     if (value !== null) {
       staleValueRef.current = value;
     }

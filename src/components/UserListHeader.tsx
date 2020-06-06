@@ -13,10 +13,10 @@ export default function UserListHeader({
   onChangeSortOrder,
 }: UserListHeaderProps) {
   return (
-    <header className="flex justify-between items-center py-5">
+    <header className="flex justify-between items-center py-3 lg:py-5">
       <h2 className="text-lg text-gray-800">
         {count === null ? (
-          <div className="shimmer h-6 w-40" />
+          <div className="shimmer h-6 w-20 lg:w-40" />
         ) : (
           <>
             <span className="font-bold">{count}</span> users found

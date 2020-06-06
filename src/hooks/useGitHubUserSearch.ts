@@ -118,6 +118,7 @@ export default function useGitHubUserSearch(
   };
 
   useEffect(() => {
+    if (!query) return;
     if (state?.query !== query) {
       const nextValue = getPaginatedSearch(query, client);
       setState({ query, requestedEndIndex: 0, value: null, nextValue });
@@ -125,6 +126,7 @@ export default function useGitHubUserSearch(
     } else if (
       !state.nextValue &&
       state.value?.ok &&
+      state.requestedEndIndex < state.value.userCount &&
       state.requestedEndIndex >= state.value.users.length
     ) {
       const nextValue = state.value.loadMore();
