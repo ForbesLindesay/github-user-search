@@ -6,16 +6,33 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/history": "^4.7.6",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
+    "@types/parse-link-header": "^1.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-window-infinite-loader": "^1.0.3",
+    "@urql/exchange-graphcache": "^2.4.2",
+    "graphql": "^15.0.0",
+    "history": "^4.10.1",
+    "parse-link-header": "^1.0.1",
+    "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "typescript": "~3.7.2"
+    "react-virtualized-auto-sizer": "^1.0.2",
+    "react-window": "^1.8.5",
+    "react-window-infinite-loader": "^1.0.5",
+    "tailwindcss": "^1.4.6",
+    "typescript": "~3.7.2",
+    "urql": "^1.9.7"
   },
   "scripts": {
+    "format": "prettier --write --ignore-path .gitignore \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.generated.css",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "NODE_ENV=production npm run build:tailwind",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,5 +52,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-virtualized-auto-sizer": "^1.0.0",
+    "@types/react-window": "^1.8.2"
   }
 }
