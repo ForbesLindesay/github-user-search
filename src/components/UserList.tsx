@@ -6,10 +6,7 @@ import User, { UserRecord } from "./User";
 
 const Row = ({ data, index, style }: ListChildComponentProps) => (
   <div style={style}>
-    {data[index] ? (
-      <User user={data[index]} />
-    ) : // TODO: placeholder
-    null}
+    {data[index] ? <User user={data[index]} /> : <User placeholder />}
   </div>
 );
 

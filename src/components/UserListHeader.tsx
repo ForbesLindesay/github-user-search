@@ -3,7 +3,7 @@ import SortOrders, { SortOrder } from "../SortOrders";
 import ChevronDownIcon from "../icons/ChevronDownIcon";
 
 export interface UserListHeaderProps {
-  count: number;
+  count: number | null;
   sortOrder: SortOrder;
   onChangeSortOrder: (sortOrder: SortOrder) => void;
 }
@@ -15,7 +15,13 @@ export default function UserListHeader({
   return (
     <header className="flex justify-between items-center py-5">
       <h2 className="text-lg text-gray-800">
-        <span className="font-bold">{count}</span> users found
+        {count === null ? (
+          <div className="shimmer h-6 w-40" />
+        ) : (
+          <>
+            <span className="font-bold">{count}</span> users found
+          </>
+        )}
       </h2>
       <div className="relative">
         <select

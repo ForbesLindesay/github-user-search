@@ -6,8 +6,8 @@ interface User {
   name?: string;
   url: string;
   email: string | null;
-  followers?: {totalCount: number}
-  repositories: {totalCount: number}
+  followers?: { totalCount: number };
+  repositories: { totalCount: number };
   createdAt: string;
   description?: string;
   bio?: string;

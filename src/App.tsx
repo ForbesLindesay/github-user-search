@@ -40,10 +40,8 @@ function App() {
           />
         </div>
       </label>
-      {staleSearchResults === null ? null : !staleSearchResults.ok ? (
-        <div>Could not load results</div>
-      ) : (
-        <React.Fragment>
+      {staleSearchResults?.ok ? (
+        <>
           <UserListHeader
             count={staleSearchResults.userCount}
             sortOrder={sortOrder}
@@ -51,12 +49,36 @@ function App() {
           />
           <div className="overflow-hidden flex-grow">
             <UserList
-              users={staleSearchResults.users}
+              users={
+                searchResults?.ok &&
+                searchResults
+                  ? searchResults.users
+                  : []
+              }
               usersCount={staleSearchResults.userCount}
               loadMoreUsers={loadMoreSearchResults}
             />
           </div>
-        </React.Fragment>
+        </>
+      ) : staleSearchResults === null ? (
+        <>
+          <UserListHeader
+            count={null}
+            sortOrder={sortOrder}
+            onChangeSortOrder={setSortOrder}
+          />
+          <div className="overflow-hidden flex-grow">
+            <UserList
+              users={[]}
+              usersCount={10}
+              loadMoreUsers={async () => {
+                /* placeholder mode */
+              }}
+            />
+          </div>
+        </>
+      ) : (
+        <div>Could not load results</div>
       )}
     </div>
   );

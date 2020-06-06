@@ -31,8 +31,8 @@
   "scripts": {
     "format": "prettier --write --ignore-path .gitignore \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.generated.css",
-    "prestart": "npm run build:tailwind",
-    "prebuild": "NODE_ENV=production npm run build:tailwind",
+    "prestart": "yarn build:tailwind",
+    "prebuild": "NODE_ENV=production yarn build:tailwind",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
